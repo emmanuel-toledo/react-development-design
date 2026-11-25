@@ -24,7 +24,7 @@ For feature structure, read `react-feature`. For layers and imports, read `react
 ### Files
 - `src/routes/app.router.tsx` composes feature routes.
 - `src/routes/protected.router.tsx` centralizes guards.
-- Feature routes: `features/<f>/routes/<f>.routes.tsx` exporting `<f>Routes`.
+- Feature routes: `features/<f>/routes/<f>.routes.tsx` exporting `<f>Routes` (mandatory when the feature exposes pages; omit the folder otherwise).
 
 ## Search params (URL as source of truth)
 - Filters, pagination and search live in the URL.
@@ -59,6 +59,34 @@ For feature structure, read `react-feature`. For layers and imports, read `react
 ## Data fetching
 - Client-side with React Query. Do not mix React Router loaders with React Query without a clear reason.
 
+## Template (`features/<feature>/routes/<feature>.routes.tsx`)
+
+```tsx
+import { lazy } from 'react';
+import type { RouteObject } from 'react-router';
+
+const FeatureLayout = lazy(() => import('../layouts/FeatureLayout'));
+const ListPage = lazy(() => import('../pages/ListPage'));
+const DetailPage = lazy(() => import('../pages/DetailPage'));
+
+export const featureRoutes: RouteObject[] = [
+  {
+    path: 'features',
+    element: <FeatureLayout />,
+    errorElement: <RouteErrorBoundary />,
+    children: [
+      { index: true, element: <ListPage /> },
+      { path: ':featureId', element: <DetailPage /> },
+    ],
+  },
+];
+```
+
+Notes:
+- Pages are lazy-loaded; the feature layout owns `<Suspense>`.
+- `errorElement` isolates failures per route (see Error boundaries).
+- Guards (auth/roles) are applied in `protected.router.tsx`, not here, unless the feature needs a local guard.
+
 ## Anti-patterns (do not)
 
 - Magic strings for paths (use constants/named routes).
@@ -74,6 +102,7 @@ For feature structure, read `react-feature`. For layers and imports, read `react
 - [ ] Guards centralized, criterion decided by the project.
 - [ ] 404 in `shared/pages/NotFound`.
 - [ ] Nested layouts with `<Outlet />`.
+- [ ] Every feature that exposes pages has exactly one `routes/<feature>.routes.tsx`; features without routes have no `routes/` folder.
 - [ ] Pages lazy-loaded.
 - [ ] `ScrollRestoration` enabled.
 - [ ] `ErrorBoundary` per route/feature.

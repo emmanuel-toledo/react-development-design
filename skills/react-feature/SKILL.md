@@ -87,7 +87,8 @@ export type { UserStatus } from './types/user.type';
 
 ## Routes
 
-- One router file per feature: `routes/<feature>.routes.tsx`.
+- One router file per feature **when the feature exposes pages/routes**: `routes/<feature>.routes.tsx`.
+- If a feature exposes no routes, do **not** create the `routes/` folder (no empty folders; see canonical tree).
 - Lazy-load pages with `lazy(() => import('../pages/<Name>Page'))`.
 - Export `<feature>Routes` as `RouteObject[]`.
 - The feature layout provides `<Suspense>` and the landmark structure.
@@ -176,6 +177,7 @@ src/features/users/
 - [ ] No empty folders.
 - [ ] `index.ts` exports the minimal contract and nothing internal.
 - [ ] No `providers/`, no `schemas/`, no internal barrels.
+- [ ] If the feature exposes routes, there is exactly one router file `routes/<feature>.routes.tsx`; otherwise no `routes/` folder exists.
 - [ ] Pages are lazy-loaded from the single router file.
 - [ ] One layout owns `<Suspense>`.
 - [ ] API access only in `apis/`; components consume hooks.
