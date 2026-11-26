@@ -12,3 +12,7 @@ Skill para agentes de IA con el objetivo de estandarizar la estructura de un pro
 - `react-effects` — política de efectos (useEffect, etc.).
 - `react-forms` — formularios con RHF + Zod.
 - `react-routing` — rutas, params, guards, layouts.
+- `react-data` — capa de datos, clientes, React Query, mocks.
+- `react-a11y` — accesibilidad: semántica, foco, teclado, contraste, skip links.
+- `react-performance` — rendimiento: splitting, memoización, virtualización, profiling.
+- `react-conventions` — convenciones: commits, PRs, branching, code review.

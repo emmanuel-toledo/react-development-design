@@ -91,7 +91,7 @@ export type { UserStatus } from './types/user.type';
 - If a feature exposes no routes, do **not** create the `routes/` folder (no empty folders; see canonical tree).
 - Lazy-load pages with `lazy(() => import('../pages/<Name>Page'))`.
 - Export `<feature>Routes` as `RouteObject[]`.
-- The feature layout provides `<Suspense>` and the landmark structure.
+- The feature layout provides `<Suspense>` and, optionally, a local section landmark (`section`/`article`). Top-level landmarks (header, nav, main, footer, skip link) belong to the app/root layout (see `react-a11y`).
 - The app composes the feature routes; it does not import pages directly.
 
 ## Naming
@@ -196,3 +196,7 @@ src/features/users/
 | Effect policy (useEffect, etc.) | `react-effects` |
 | Forms (RHF + Zod) | `react-forms` |
 | Routing (paths, guards, params) | `react-routing` |
+| Data layer, clients, React Query, mocks | `react-data` |
+| Accessibility (semantics, focus, contrast, etc.) | `react-a11y` |
+| Performance (splitting, memo, virtualization, profiling) | `react-performance` |
+| Conventions (commits, PRs, branching, review) | `react-conventions` |

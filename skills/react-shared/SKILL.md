@@ -37,6 +37,7 @@ src/shared/
     services/
     queries/
     mutations/
+    <client>/     # transport clients (client.ts), e.g. axios, firebase
   constants/      # only if needed
 ```
 
@@ -57,7 +58,7 @@ src/shared/
 | `interfaces/` | Shared object contracts | Domain interfaces |
 | `types/` | Shared unions, aliases, utility types | Domain types |
 | `utils/` | Generic pure functions and helpers | Domain logic |
-| `apis/` | Shared external services (services/queries/mutations) | Feature APIs |
+| `apis/` | Transport clients (`<client>/client.ts`, e.g. axios, firebase) always shared; promoted data modules (`services/`, `queries/`, `mutations/`) only via promotion gate | Feature APIs (stay in `features/<f>/apis/` unless promoted) |
 | `constants/` | Shared constants | Feature constants |
 
 ## shadcn/ui rule
@@ -125,3 +126,7 @@ Document the promotion: component, current consumers, why it is domain-agnostic,
 | Effect policy (useEffect, etc.) | `react-effects` |
 | Forms (RHF + Zod) | `react-forms` |
 | Routing (paths, guards, params) | `react-routing` |
+| Data layer, clients, React Query, mocks | `react-data` |
+| Accessibility (semantics, focus, contrast, etc.) | `react-a11y` |
+| Performance (splitting, memo, virtualization, profiling) | `react-performance` |
+| Conventions (commits, PRs, branching, review) | `react-conventions` |

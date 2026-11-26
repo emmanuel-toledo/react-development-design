@@ -30,12 +30,12 @@ For feature structure, read `react-feature`. For layers and imports, read `react
 2. **react-hook-form + Zod.** Use `zodResolver` from `@hookform/resolvers/zod`. Derive the form type with `z.infer`.
 3. **One `useForm` per form** with explicit `defaultValues`.
 4. **Submit goes through a React Query mutation.** Disable the submit button and show a spinner while pending; prevent double submit.
-5. **Server errors:** map them to fields with `setError` and show a general toast (Sonner).
+5. **Server errors:** the mutation hook returns the error; the form component maps it to fields with `setError` and shows a general toast (Sonner). (See `react-data`: mutation hooks do not trigger toasts by default.)
 6. **Dynamic fields** with `useFieldArray` and stable keys.
 7. **Multi-step (wizard) is optional:** state per step + validation per step; single submit at the end.
 8. **Reset** with `reset()` or by changing the `key` when the entity changes.
 9. **Async validation** (e.g. unique username) with debounce via RHF `validate`.
-10. **Accessibility:** labels, `aria-invalid`, associated error messages, focus on first error.
+10. **Accessibility (form-specific):** labels, `aria-invalid`, associated error messages, focus on first error via `setFocus`. General a11y rules (semantics, contrast, keyboard, landmarks) live in `react-a11y`.
 11. **Messages via i18n keys** (react-i18next), not hardcoded strings.
 
 ## Unsaved-changes guard
@@ -48,6 +48,7 @@ If the form has unsaved data (`formState.isDirty === true`) and the user tries t
 - Exception: after a successful submit, allow leaving without confirmation (reset dirty).
 - The guard is **disabled while submitting** (`isSubmitting` / mutation pending) and **re-enabled if the submit fails**.
 - Standard confirmation message (configurable per feature if needed).
+- The confirmation must be accessible (native `confirm` or an accessible dialog with focus trap) — see `react-a11y`.
 
 ## Anti-patterns (do not)
 
@@ -84,3 +85,7 @@ If the form has unsaved data (`formState.isDirty === true`) and the user tries t
 | Testing strategy and coverage | `react-testing` |
 | Effect policy (useEffect, etc.) | `react-effects` |
 | Routing (paths, guards, params) | `react-routing` |
+| Data layer, clients, React Query, mocks | `react-data` |
+| Accessibility (semantics, focus, contrast, etc.) | `react-a11y` |
+| Performance (splitting, memo, virtualization, profiling) | `react-performance` |
+| Conventions (commits, PRs, branching, review) | `react-conventions` |

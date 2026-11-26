@@ -53,6 +53,11 @@ For feature structure, read `react-feature`. For layers and imports, read `react
 ## Error boundaries
 - `ErrorBoundary` per route/feature to isolate failures.
 
+## Accessibility (route-level)
+- Skip link "Saltar al contenido principal" in the root layout (see `react-a11y`).
+- Move focus to `main` on every navigation.
+- Top-level landmarks (header, nav, main, footer) live in the root layout, not per feature.
+
 ## Redirects
 - Use the `redirect()` helper and named routes; avoid magic strings.
 
@@ -106,6 +111,7 @@ Notes:
 - [ ] Pages lazy-loaded.
 - [ ] `ScrollRestoration` enabled.
 - [ ] `ErrorBoundary` per route/feature.
+- [ ] Skip link + focus-to-`main` on navigation (see `react-a11y`).
 - [ ] Redirects use helper + named routes.
 - [ ] Data fetching with React Query.
 - [ ] Lint and typecheck pass.
@@ -121,3 +127,7 @@ Notes:
 | Forms (RHF + Zod) | `react-forms` |
 | Effect policy (useEffect, etc.) | `react-effects` |
 | Testing strategy and coverage | `react-testing` |
+| Data layer, clients, React Query, mocks | `react-data` |
+| Accessibility (semantics, focus, contrast, etc.) | `react-a11y` |
+| Performance (splitting, memo, virtualization, profiling) | `react-performance` |
+| Conventions (commits, PRs, branching, review) | `react-conventions` |

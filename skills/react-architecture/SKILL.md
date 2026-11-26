@@ -111,3 +111,7 @@ Ask before:
 | Effect policy (useEffect, etc.) | `react-effects` |
 | Forms (RHF + Zod) | `react-forms` |
 | Routing (paths, guards, params) | `react-routing` |
+| Data layer, clients, React Query, mocks | `react-data` |
+| Accessibility (semantics, focus, contrast, etc.) | `react-a11y` |
+| Performance (splitting, memo, virtualization, profiling) | `react-performance` |
+| Conventions (commits, PRs, branching, review) | `react-conventions` |

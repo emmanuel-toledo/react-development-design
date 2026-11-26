@@ -67,6 +67,7 @@ Cover the states: loading, empty, error, success.
 ## Test data
 
 - Reusable factories/fixtures live in `tests/factories/` (or `tests/fixtures/`).
+- Mock data factories for MSW live in `mocks/factories/` (root) and are the single source shared by handlers and tests (see `react-data`). `tests/factories/` is reserved for test-only data that is not an API mock (component props, store fixtures). Do not duplicate a mock factory in both places.
 
 ## React Query and Zustand in tests
 
@@ -115,3 +116,7 @@ Cover the states: loading, empty, error, success.
 | Effect policy (useEffect, etc.) | `react-effects` |
 | Forms (RHF + Zod) | `react-forms` |
 | Routing (paths, guards, params) | `react-routing` |
+| Data layer, clients, React Query, mocks | `react-data` |
+| Accessibility (semantics, focus, contrast, etc.) | `react-a11y` |
+| Performance (splitting, memo, virtualization, profiling) | `react-performance` |
+| Conventions (commits, PRs, branching, review) | `react-conventions` |

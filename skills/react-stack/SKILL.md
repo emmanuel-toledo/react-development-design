@@ -57,6 +57,8 @@ Owns **the standard library stack** for React applications. Load this before add
 | Concern | Library |
 | --- | --- |
 | Linting | ESLint |
+| A11y linting (dev, recommended) | eslint-plugin-jsx-a11y |
+| List virtualization (recommended, requires approval) | @tanstack/react-virtual |
 | Formatting | Prettier |
 | Types | TypeScript |
 
@@ -79,3 +81,7 @@ Owns **the standard library stack** for React applications. Load this before add
 | Effect policy (useEffect, etc.) | `react-effects` |
 | Forms (RHF + Zod) | `react-forms` |
 | Routing (paths, guards, params) | `react-routing` |
+| Data layer, clients, React Query, mocks | `react-data` |
+| Accessibility (semantics, focus, contrast, etc.) | `react-a11y` |
+| Performance (splitting, memo, virtualization, profiling) | `react-performance` |
+| Conventions (commits, PRs, branching, review) | `react-conventions` |
