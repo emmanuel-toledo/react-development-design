@@ -62,6 +62,31 @@ export interface ApiError {
 - Feature code and UI consume `ApiError`, never `AxiosError` or SDK errors.
 - Use `ApiError.status` / `code` to branch (401, 403, 404, 422, 5xx).
 
+## Service structure
+
+A service is a pure async function returning typed data, using the shared transport client:
+
+```ts
+// features/<f>/apis/services/user.service.ts
+import { apiClient } from '@/shared/apis/axios/client';
+import type { User } from '@/features/users/interfaces/user.interface';
+
+export interface ApiResponse<T> { data: T; }
+
+export async function getUser(id: string): Promise<User> {
+  const res = await apiClient.get<ApiResponse<User>>(`/users/${id}`);
+  return res.data;
+}
+
+export async function listUsers(params: UserFilters): Promise<User[]> {
+  const res = await apiClient.get<ApiResponse<User[]>>('/users', { params });
+  return res.data;
+}
+```
+
+- Services return typed data; hooks wrap them in React Query.
+- `ApiResponse<T>` is a shared generic (define once in `shared/types/` or `shared/interfaces/`).
+
 ## React Query
 
 ### QueryClient defaults

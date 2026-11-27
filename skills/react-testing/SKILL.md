@@ -79,6 +79,15 @@ Cover the states: loading, empty, error, success.
 - Run `axe` checks on critical components.
 - Assert no violations.
 
+## End-to-end (Playwright)
+- Tests in `tests/e2e/`.
+- Use page objects for reusable selectors/actions.
+- Run against a built/preview server, not dev.
+- Include a11y checks (axe) on critical pages.
+
+## Performance testing
+- Not covered by this skill; see `react-performance` for profiling and budgets.
+
 ## Execution rules
 
 - **All tests must pass (100% success).** No merge with failing tests.

@@ -28,11 +28,11 @@ For feature structure, read `react-feature`. For layers and imports, read `react
 
 1. **Reuse shared components.** Use `shared/components/forms` and `shared/components/ui` and shadcn components. Do not create input components per form. If a needed input does not exist in shared, add it to shared (with promotion approval) instead of inlining it in the feature.
 2. **react-hook-form + Zod.** Use `zodResolver` from `@hookform/resolvers/zod`. Derive the form type with `z.infer`.
-3. **One `useForm` per form** with explicit `defaultValues`.
+3. **One `useForm` per form** with explicit `defaultValues`. When data arrives async, use `reset()` (or set `defaultValues` after load and `reset` on change) instead of conditional `useForm`.
 4. **Submit goes through a React Query mutation.** Disable the submit button and show a spinner while pending; prevent double submit.
 5. **Server errors:** the mutation hook returns the error; the form component maps it to fields with `setError` and shows a general toast (Sonner). (See `react-data`: mutation hooks do not trigger toasts by default.)
 6. **Dynamic fields** with `useFieldArray` and stable keys.
-7. **Multi-step (wizard) is optional:** state per step + validation per step; single submit at the end.
+7. **Multi-step (wizard) is optional:** state per step + validation per step; single submit at the end. Step state can live in the URL (search params via `nuqs`) or in component state; prefer URL when the step should be shareable/bookmarkable.
 8. **Reset** with `reset()` or by changing the `key` when the entity changes.
 9. **Async validation** (e.g. unique username) with debounce via RHF `validate`.
 10. **Accessibility (form-specific):** labels, `aria-invalid`, associated error messages, focus on first error via `setFocus`. General a11y rules (semantics, contrast, keyboard, landmarks) live in `react-a11y`.

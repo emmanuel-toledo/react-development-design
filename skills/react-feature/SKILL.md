@@ -50,7 +50,7 @@ The tree is exhaustive. A new top-level folder requires justification. **No empt
 
 | Folder        | Put here                                                                                       | Not here                                    |
 | ------------- | ---------------------------------------------------------------------------------------------- | ------------------------------------------- |
-| `apis/services/`   | HTTP clients, Axios calls, connection to external services, mappers                             | UI, React, component state                  |
+| `apis/services/`   | Data services that use the shared transport client (`shared/apis/<client>/`); mappers, connection to external services | UI, React, component state, the transport client itself |
 | `apis/queries/`    | React Query `useQuery` wrappers and query keys                                                 | Mutations, UI                              |
 | `apis/mutations/`  | React Query `useMutation` wrappers                                                             | Queries, UI                                |
 | `components/`       | Feature-only UI; local props in the same file                                                  | Data access, cross-feature contracts        |
@@ -98,9 +98,9 @@ export type { UserStatus } from './types/user.type';
 
 - Files: `kebab-case` for folders; components `PascalCase.tsx`; hooks `use<Name>.ts`; other files `camelCase` with role suffix (`.service.ts`, `.queries.ts`, `.mutations.ts`, `.store.ts`, `.interface.ts`, `.type.ts`, `.routes.tsx`, `.layout.tsx`).
 - Components: `PascalCase` named exports.
-- Hooks: `useSomething`, file `use-something.ts` → `useSomething.ts` (camelCase with `use` prefix).
+- Hooks: `useSomething`, file `useSomething.ts` (camelCase with `use` prefix).
 - Types and interfaces: `PascalCase`, no `I` prefix.
-- Constants: `UPPER_SNAKE_CASE`.
+- Constants: `UPPER_SNAKE_CASE`. Feature constants live in `utils/` (e.g. `utils/constants.ts`); there is no `constants/` folder in the feature tree. Shared constants go to `shared/constants/`.
 - Tailwind classes only; no CSS files per component.
 
 ## Imports

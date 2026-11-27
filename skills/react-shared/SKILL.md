@@ -25,6 +25,7 @@ src/shared/
     layout/
     feedback/
     forms/
+    routes/         # route guards (RequireAuth, RequireRole), only if needed
     shadcn/
       ui/
   pages/
@@ -33,6 +34,7 @@ src/shared/
   interfaces/
   types/
   utils/          # only if needed
+  config/         # only if needed (env.ts)
   apis/           # only if needed
     services/
     queries/
@@ -51,6 +53,7 @@ src/shared/
 | `components/layout/` | Shared layouts, page wrappers | Feature layouts |
 | `components/feedback/` | Toasts, alerts, spinners, empty states | Feature-specific feedback |
 | `components/forms/` | Generic form inputs and wrappers | Domain forms |
+| `components/routes/` | Route guards (`RequireAuth`, `RequireRole`) | Domain route logic |
 | `components/shadcn/ui/` | shadcn/ui generated components | Hand-written primitives (use `components/ui/`) |
 | `pages/` | Generic pages: `NotFound`, `Error`, `Loading`, `Maintenance` | Feature pages |
 | `stores/` | Global Zustand stores (theme, session, UI state) | Feature-specific stores |
@@ -58,6 +61,7 @@ src/shared/
 | `interfaces/` | Shared object contracts | Domain interfaces |
 | `types/` | Shared unions, aliases, utility types | Domain types |
 | `utils/` | Generic pure functions and helpers | Domain logic |
+| `config/` | Environment config (env.ts) — read `import.meta.env` here only | Domain config |
 | `apis/` | Transport clients (`<client>/client.ts`, e.g. axios, firebase) always shared; promoted data modules (`services/`, `queries/`, `mutations/`) only via promotion gate | Feature APIs (stay in `features/<f>/apis/` unless promoted) |
 | `constants/` | Shared constants | Feature constants |
 

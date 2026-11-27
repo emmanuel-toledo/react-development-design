@@ -62,13 +62,29 @@ Owns **the standard library stack** for React applications. Load this before add
 | Formatting | Prettier |
 | Types | TypeScript |
 
+## Optional dependencies (require approval)
+
+These are mentioned by other skills but are not part of the base stack. Add only with justification and approval (see `react-architecture`).
+
+| Concern | Library | Used by |
+| --- | --- | --- |
+| Test data factories | @faker-js/faker | `react-data` |
+| Re-render debugging (dev) | why-did-you-render | `react-performance` |
+| Bundle analysis (dev) | rollup-plugin-visualizer / vite-bundle-visualizer | `react-performance` |
+| Commit message linting (dev) | commitlint + husky | `react-conventions` |
+| Pre-commit linting (dev) | lint-staged | `react-conventions` |
+| Image optimization (build) | vite-imagetools | `react-performance` |
+| List virtualization | @tanstack/react-virtual | `react-performance` |
+| A11y linting (dev) | eslint-plugin-jsx-a11y | `react-a11y` |
+
 ## Rules
 
 - Do not add a dependency that duplicates an existing stack concern.
 - New dependencies require justification and approval (see `react-architecture`).
 - Keep the stack aligned with `react-feature` (Tailwind, Zustand, React Query, Axios in `apis/`) and `react-shared` (shadcn/ui).
 - Forms use `react-hook-form` + `Zod` with `zodResolver`; derive form types with `z.infer`.
-- Data access goes through Axios in `apis/services/` and React Query in `apis/queries/` and `apis/mutations/`.
+- Data access goes through the shared transport client (`shared/apis/<client>/`); services live in `apis/services/` and React Query in `apis/queries/` and `apis/mutations/`.
+- Internationalization uses `react-i18next`/`i18next`; there is no dedicated skill yet — follow the library docs and keep translation keys in `locales/` (or `public/locales/`).
 
 ## References
 

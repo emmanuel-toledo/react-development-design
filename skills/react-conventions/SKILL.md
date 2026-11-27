@@ -121,6 +121,14 @@ Format: `type/short-description` in kebab-case.
 - [ ] No unrelated changes in this PR
 ```
 
+## Versioning and releases
+
+- Use Semantic Versioning (semver): `MAJOR.MINOR.PATCH`.
+- `MAJOR`: breaking changes; `MINOR`: new features (backward compatible); `PATCH`: bug fixes.
+- Tag releases on `main` (e.g. `v1.2.3`).
+- `CODEOWNERS` file (optional) to auto-assign reviewers per path.
+- Release process: create `release/*` from `develop`, bump version, merge to `main` and back-merge to `develop`, tag.
+
 ## Merge strategy
 
 - **Squash and merge** by default (one commit per PR).

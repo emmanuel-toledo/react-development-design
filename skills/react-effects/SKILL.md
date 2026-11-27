@@ -42,13 +42,13 @@ If approval is missing, **stop and ask**. Do not add the effect, do not add a ro
 
 5. **Ref callbacks.** Run code when a DOM node mounts/unmounts. *Why*: no effect; tied to the node lifecycle. *When*: measuring dimensions, focusing inputs, initializing third-party widgets.
 
-6. **Route loaders (React Router).** Load data before render. *Why*: data is ready on render; no loading state in components. *When*: initial data for a route.
+6. **Route loaders (React Router).** Load data before render. *Why*: data is ready on render; no loading state in components. *When*: initial data for a route. Note: the default in this stack is client-side data fetching with React Query (see `react-data`/`react-routing`). Use a route loader only for initial route data with a documented reason; do not mix loaders and React Query without a clear reason.
 
 7. **React Query (TanStack Query).** Server state with cache, deduplication and revalidation. *Why*: no fetch-in-effect; handles loading/error/retry. *When*: any API read or mutation.
 
 8. **`useMemo` / `useCallback`** only for measured cost or required stable identity. *Why*: avoids unnecessary recomputation; do not use by default. *When*: expensive calculations, child memoization.
 
-9. **`useEffectEvent` (React 19)** to read non-reactive values inside an approved effect. *Why*: extracts logic that must not re-trigger the effect, avoiding stale closures. *When*: only inside an already-approved effect; it does not remove the approval requirement.
+9. **`useEffectEvent` (React 19+)** to read non-reactive values inside an approved effect. Requires React 19 or later (stack uses the most stable React). *Why*: extracts logic that must not re-trigger the effect, avoiding stale closures. *When*: only inside an already-approved effect; it does not remove the approval requirement.
 
 ## Allowed exceptions (with approval)
 

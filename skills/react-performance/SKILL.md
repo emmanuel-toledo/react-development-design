@@ -199,6 +199,28 @@ export function VirtualList({ items }: { items: Item[] }) {
 }
 ```
 
+### Image optimization
+
+```tsx
+<img
+  src="/images/hero.webp"
+  srcSet="/images/hero-400.webp 400w, /images/hero-800.webp 800w, /images/hero-1200.webp 1200w"
+  sizes="(max-width: 600px) 400px, (max-width: 1000px) 800px, 1200px"
+  width={1200}
+  height={600}
+  loading="lazy"
+  decoding="async"
+  alt="Dashboard overview"
+/>
+```
+
+For the LCP image, use `loading="eager"` and `fetchpriority="high"`.
+
+### Budgets tooling (optional)
+
+- `size-limit` or `bundlesize` in CI to enforce bundle budgets.
+- `rollup-plugin-visualizer` / `vite-bundle-visualizer` for bundle analysis (dev, requires approval).
+
 ### Concurrency (responsive filter)
 
 ```tsx
@@ -241,3 +263,4 @@ export function Search({ items }: { items: Item[] }) {
 | Routing (paths, guards, params) | `react-routing` |
 | Data layer, clients, React Query, mocks | `react-data` |
 | Accessibility (semantics, focus, contrast, etc.) | `react-a11y` |
+| Conventions (commits, PRs, branching, review) | `react-conventions` |

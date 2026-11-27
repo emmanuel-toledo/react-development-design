@@ -68,7 +68,7 @@ If the answer is ambiguous, stop and ask before moving code.
 - Application tests live under `tests/`, mirroring `src/`: `tests/app`, `tests/shared`, `tests/features/<feature>`.
 - Do not put `*.test.ts(x)` under `src/`.
 - A feature test may import its own internals; integration tests between features use the public API.
-- Files are `kebab-case`; component exports are `PascalCase`; hooks are `useSomething`; types are `PascalCase` without an `I` prefix; constants are `UPPER_SNAKE_CASE`.
+- Folders are `kebab-case`; component files are `PascalCase.tsx`; hook files are `useSomething.ts` (camelCase); other files are `camelCase` with a role suffix (`.service.ts`, `.queries.ts`, etc.); types are `PascalCase` without an `I` prefix; constants are `UPPER_SNAKE_CASE`.
 - Feature files use role suffixes: `.service.ts`, `.queries.ts`, `.mutations.ts`, `.store.ts`, `.interface.ts`, `.type.ts`, `.layout.tsx`, `.routes.tsx`.
 - Use `import type` for types and the `@/` alias for cross-layer imports.
 

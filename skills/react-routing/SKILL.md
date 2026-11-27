@@ -32,13 +32,14 @@ For feature structure, read `react-feature`. For layers and imports, read `react
 - Keep state shareable and persistent across reloads.
 
 ## Guards
-- Reusable components: `RequireAuth`, `RequireRole`.
+- Reusable components: `RequireAuth`, `RequireRole`, located in `shared/components/routes/`.
 - Criteria (auth, roles, both, or none) is **decided by the project**; guards must be composable to cover each case.
 - Centralize in `protected.router.tsx`.
 - Redirect to login or access-denied page accordingly.
 
 ## 404
 - `NotFound` page lives in `shared/pages/`.
+- Add a catch-all route (`path: '*'`) rendering `NotFound` at the end of the route tree.
 
 ## Nested layouts
 - `RootLayout` (app) plus feature layouts nested via `<Outlet />`.
@@ -89,7 +90,7 @@ export const featureRoutes: RouteObject[] = [
 
 Notes:
 - Pages are lazy-loaded; the feature layout owns `<Suspense>`.
-- `errorElement` isolates failures per route (see Error boundaries).
+- `errorElement` isolates failures per route (see Error boundaries). `RouteErrorBoundary` is a shared component (e.g. `shared/components/RouteErrorBoundary.tsx`).
 - Guards (auth/roles) are applied in `protected.router.tsx`, not here, unless the feature needs a local guard.
 
 ## Anti-patterns (do not)

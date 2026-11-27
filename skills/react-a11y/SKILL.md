@@ -51,7 +51,7 @@ For feature structure, read `react-feature`. For layers and imports, read `react
 - Modals/dialogs: focus trap + initial focus + restore focus on close.
 - Forms: focus the first error via `setFocus` in the submit handler (event-driven), not an effect.
 - Route changes: move focus to `main` on navigation.
-- Use ref callbacks, `autoFocus` or imperative calls in handlers. **Do not use `useEffect` for focus by default**; if an effect is truly required (e.g. focus after async load), follow the approval process in `react-effects` (`docs/decisions/effects.md` + `// effect: EFF-XXX`).
+- Use ref callbacks, `autoFocus` or imperative calls in handlers. **Do not use `useEffect` for focus by default**; if an effect is truly required (e.g. focus after async load or route change), follow the approval process in `react-effects` (`docs/decisions/effects.md` + `// effect: EFF-XXX`). The template below uses an approved effect for route-change focus.
 - Skip link "Saltar al contenido principal" at the top of the root layout, visible on focus.
 
 ### 6. Contrast
@@ -91,6 +91,7 @@ For feature structure, read `react-feature`. For layers and imports, read `react
 - `eslint-plugin-jsx-a11y` (dev, recommended; adding it requires approval per `react-architecture`).
 - `axe-core` / `jest-axe` in tests (see `react-testing`).
 - CI gate: recommended, non-blocking (axe in Playwright).
+- Manual testing with screen readers (VoiceOver, NVDA) recommended for critical flows.
 
 ## Template: skip link + focus on route change
 
